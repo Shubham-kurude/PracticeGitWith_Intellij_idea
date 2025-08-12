@@ -5,6 +5,7 @@ import MahindraEnqueryApp.demo.repository.EnquiryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EnquiryServiceImpl implements EnquiryService{
@@ -24,4 +25,19 @@ public class EnquiryServiceImpl implements EnquiryService{
     public List<Enquiry> getAllEnquiries() {
         return repository.findAll();
     }
+
+    @Override
+    public Optional<Enquiry> getEnquiryById(Long id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public Enquiry deleteEnquiryById(Long id) {
+        Enquiry enquiry = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("id not found "));
+        repository.delete(enquiry);
+        return enquiry;
+    }
+
+
 }

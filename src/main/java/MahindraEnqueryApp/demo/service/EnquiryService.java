@@ -3,8 +3,11 @@ package MahindraEnqueryApp.demo.service;
 import MahindraEnqueryApp.demo.model.Enquiry;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EnquiryService {
-        public Enquiry saveEnquiry(Enquiry enquiry);
-        public List<Enquiry> getAllEnquiries();
+         Enquiry saveEnquiry(Enquiry enquiry);
+         List<Enquiry> getAllEnquiries();
+         Optional<Enquiry> getEnquiryById(Long id);
+         Enquiry deleteEnquiryById(Long id);
 }
